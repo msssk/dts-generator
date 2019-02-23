@@ -195,7 +195,7 @@ export default function generate(options: Options): Promise<void> {
 			throw new Error(
 				`name and main must be used together.  Perhaps you want prefix instead of
 				name? In dts-generator version 2.1, name did double duty as the option to
-				use to prefix module names with, but in >=2.2 the name option was split
+				use to prefix module names with, but in >2.1 the name option was split
 				into two; prefix is what is now used to prefix imports and module names
 				in the output.`
 			);
@@ -352,6 +352,10 @@ export default function generate(options: Options): Promise<void> {
 			if (sourceFile.fileName.slice(-DTSLEN) === '.d.ts') {
 				writeDeclaration(sourceFile, false);
 				return;
+			}
+
+			if (!options.prefix) {
+				throw new Error("When using 'options.name' you must also specify 'options.prefix'");
 			}
 
 			// We can optionally output the main module if there's something to export.
