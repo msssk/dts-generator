@@ -70,7 +70,7 @@ import Foo = require('package-name/Foo');
 ## Options
 
 * `baseDir?: string`: The base directory for the package being bundled. Any dependencies discovered outside this
-  directory will be excluded from the bundle.  *Note* this is no longer the preferred way to configure `dts-generator`, 
+  directory will be excluded from the bundle.  *Note* this is no longer the preferred way to configure `dts-generator`,
   it automatically gets its value from compiler option `rootDir` if specified in `tsconfig.json`, otherwise it gets value from `project`. Please see option `project`.
 * `exclude?: string[]`: A list of glob patterns, relative to `baseDir`, that should be excluded from the bundle. Use
   the `--exclude` flag one or more times on the command-line. Defaults to `[ "node_modules/**/*.d.ts" ]`.
@@ -86,9 +86,11 @@ import Foo = require('package-name/Foo');
 * `name: string`: The name of the package. Used to determine the correct exported package name for modules.
 * `out: string`: The filename where the generated bundle will be created.
 * `project?: string`: The base directory for the project being bundled.  It is assumed that this directory contains a `tsconfig.json` which will be parsed to determine the files that should be bundled as well as other configuration information like `target`
+* `sendMessage?: function`: When using dts-generator programmatically this option can specify a function to receive logging messages from dts-generator.
 * `target?: ts.ScriptTarget`: The target environment for generated code. Defaults to `ts.ScriptTarget.Latest`.
 * `resolveModuleId: (params: ResolveModuleIdParams) => string`: An optional callback provided by the invoker to customize the declared module ids the output d.ts files. For details see [resolving module ids](docs/resolving-module-ids.md).
 * `resolveModuleImport: (params: ResolveModuleImportParams) => string`: An optional callback provided by the invoker to customize the imported module ids in the output d.ts files. For details see [resolving module ids](docs/resolving-module-ids.md).
+* `verbose?: boolean=false`: If `true` additional output is generated during processing.
 
 ## Known issues
 

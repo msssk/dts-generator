@@ -29,7 +29,6 @@ export interface Options {
 	externs?: string[];
 	types?: string[];
 	eol?: string;
-	includes?: string[];
 	indent?: string;
 	main?: string;
 	moduleResolution?: ts.ModuleResolutionKind;
@@ -37,7 +36,6 @@ export interface Options {
 	out: string;
 	outDir?: string;
 	prefix?: string;
-	rootDir?: string;
 	target?: ts.ScriptTarget;
 	sendMessage?: (message: any, ...optionalParams: any[]) => void;
 	resolveModuleId?: (params: ResolveModuleIdParams) => string;
