@@ -354,7 +354,7 @@ export default function generate(options: Options): Promise<void> {
 				return;
 			}
 
-			if (!options.prefix) {
+			if (options.main && !options.prefix) {
 				throw new Error("When using 'options.name' you must also specify 'options.prefix'");
 			}
 
