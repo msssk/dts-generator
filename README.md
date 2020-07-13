@@ -5,6 +5,15 @@
 
 Generates a single `.d.ts` bundle containing external module declarations exported from TypeScript module files.
 
+> Advances in the TypeScript compiler may meet your needs without using `dts-generator`. The following command will
+generate `index.d.ts` similar to the output of `dts-generator`:
+
+```bash
+tsc --declaration --emitDeclarationOnly --module System --resolveJsonModule false --outFile dist/index.d.ts
+```
+
+> If you want to generate type declarations from JavaScript see [microsoft/dts-gen](https://github.com/microsoft/dts-gen).
+
 ## What does this mean?
 
 If you have a project with lots of individual TypeScript files that are designed to be consumed as external modules,
@@ -70,7 +79,7 @@ import Foo = require('package-name/Foo');
 ## Options
 
 * `baseDir?: string`: The base directory for the package being bundled. Any dependencies discovered outside this
-  directory will be excluded from the bundle.  *Note* this is no longer the preferred way to configure `dts-generator`, 
+  directory will be excluded from the bundle.  *Note* this is no longer the preferred way to configure `dts-generator`,
   it automatically gets its value from compiler option `rootDir` if specified in `tsconfig.json`, otherwise it gets value from `project`. Please see option `project`.
 * `exclude?: string[]`: A list of glob patterns, relative to `baseDir`, that should be excluded from the bundle. Use
   the `--exclude` flag one or more times on the command-line. Defaults to `[ "node_modules/**/*.d.ts" ]`.
